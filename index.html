@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" type="image/png">
-    <title>Kanan Patel | Full-Stack Developer & AI Specialist</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%236366f1%22/><text x=%2250%22 y=%2270%22 font-family=%22Arial, sans-serif%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>K</text></svg>"
+        type="image/svg+xml">
+    <title>Kanan Patel — Software Engineer & AI Developer</title>
 
     <!-- Google Fonts: Plus Jakarta Sans, Inter, Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -534,8 +536,7 @@
 
         .about-img-frame img {
             width: 100%;
-            height: 420px;
-            object-fit: cover;
+            height: auto;
             display: block;
             transition: transform 0.6s ease;
         }
@@ -545,15 +546,11 @@
         }
 
         .about-img-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: var(--bg-glass);
+            position: relative;
+            background: var(--bg-card);
             backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border-color);
+            border-top: 2px solid var(--border-color);
             padding: 16px 20px;
-            border-radius: 18px;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -1072,8 +1069,9 @@
             }
 
             .about-img-frame img {
-                height: 320px;
+                height: auto;
             }
+
 
             .section-padding {
                 padding: 80px 0;
@@ -1162,7 +1160,7 @@
             }
 
             .about-img-frame img {
-                height: 280px;
+                height: auto;
             }
 
             .dock-btn {
@@ -1227,6 +1225,102 @@
             .col-6.col-md-3 {
                 width: 50% !important;
             }
+        }
+
+        /* ==========================================================================
+           TECH MARQUEE & GITHUB STATS
+           ========================================================================== */
+        .tech-marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            padding: 35px 0;
+            background: rgba(0, 0, 0, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .light-mode .tech-marquee-wrapper {
+            background: rgba(0, 0, 0, 0.02);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-marquee-wrapper::before,
+        .tech-marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .tech-marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-primary), transparent);
+        }
+
+        .tech-marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-primary), transparent);
+        }
+
+        .tech-marquee {
+            display: flex;
+            gap: 60px;
+            animation: scroll-marquee 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .tech-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .tech-marquee-item {
+            font-size: 2.8rem;
+            color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.6;
+        }
+
+        .tech-marquee-item span {
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .tech-marquee-item:hover {
+            color: var(--accent-indigo);
+            transform: scale(1.1) translateY(-5px);
+            opacity: 1;
+            text-shadow: var(--shadow-glow);
+        }
+
+        @keyframes scroll-marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .github-stats-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .github-stats-container img:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -1293,7 +1387,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
                     <div class="hero-badge">
-                        <span class="badge bg-primary rounded-pill me-1">BE IT Graduate</span>
+                        <span class="badge bg-primary rounded-pill me-1">B.E. IT Professional</span>
                         <span class="text-muted">Python AI/ML Developer & Full-Stack Engineer</span>
                     </div>
 
@@ -1306,18 +1400,20 @@
                     </div>
 
                     <p class="hero-subtext">
-                        B.E. Information Technology graduate with strong skills in full-stack development.
-                        Experienced in building web applications using modern technologies like React, Python, PHP, and
-                        AI/ML frameworks. Eager to contribute to dynamic teams and grow as a software developer.
+                        Dedicated Software Professional with a B.E. in Information Technology and a robust track record
+                        in full-stack development.
+                        Experienced in architecting web applications using modern technologies like React, Python, PHP,
+                        and
+                        AI/ML frameworks, with a commitment to delivering impactful scalable solutions.
                     </p>
 
                     <div class="d-flex flex-wrap gap-3 mb-5">
                         <a href="#projects" class="btn-glow-primary">
                             <i class="fas fa-rocket"></i> Explore Projects
                         </a>
-                        <a href="Kanan Patel Resume 2026.pdf" class="btn-outline-custom" download="Kanan Patel Resume 2026.pdf">
-                            <i class="fas fa-file-arrow-down"></i> Download Resume
-                        </a>
+                        <button class="btn-outline-custom" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                            <i class="fas fa-eye"></i> View Resume
+                        </button>
                         <button class="btn-outline-custom" onclick="openTerminal()">
                             <i class="fas fa-terminal text-indigo"></i> Run CLI
                         </button>
@@ -1355,6 +1451,28 @@
         </div>
     </section>
 
+    <!-- Infinite Tech Marquee -->
+    <div class="tech-marquee-wrapper" data-aos="fade-in">
+        <div class="tech-marquee">
+            <!-- First Set -->
+            <div class="tech-marquee-item"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-react"></i><span>React.js</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+            <div class="tech-marquee-item"><i class="fas fa-brain"></i><span>AI / ML</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-angular"></i><span>Angular</span></div>
+            <div class="tech-marquee-item"><i class="fas fa-database"></i><span>SQL</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+            <!-- Second Set (Duplicate for infinite scroll) -->
+            <div class="tech-marquee-item"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-react"></i><span>React.js</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+            <div class="tech-marquee-item"><i class="fas fa-brain"></i><span>AI / ML</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-angular"></i><span>Angular</span></div>
+            <div class="tech-marquee-item"><i class="fas fa-database"></i><span>SQL</span></div>
+            <div class="tech-marquee-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section id="about" class="section-padding">
         <div class="container">
@@ -1369,7 +1487,7 @@
                 <div class="col-lg-5" data-aos="fade-right">
                     <div class="about-img-frame">
                         <img src="My_Profile.jpg" alt="Kanan Patel" id="profile-img"
-                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Kanan+Patel&size=420&background=6366f1&color=fff&bold=true&font-size=0.4';">
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Kanan+Patel&size=420&background=6366f1&color=fff&bold=true&font-size=0.4';">
                         <div class="about-img-badge">
                             <div class="about-badge-icon">
                                 <i class="fas fa-graduation-cap"></i>
@@ -1386,8 +1504,10 @@
                     <h3 class="mb-3 fs-2 fw-bold text-main">Building the Bridge Between Web & Artificial Intelligence
                     </h3>
                     <p class="text-muted mb-4 fs-6">
-                        B.E. Information Technology graduate with strong skills in full-stack development and
-                        AI/ML frameworks. Experienced in building web applications using modern technologies like React,
+                        Innovative Software Engineer holding a B.E. in Information Technology, blending strong
+                        foundations in full-stack development with
+                        advanced AI/ML expertise. Proven track record in engineering scalable web applications using
+                        modern technologies like React,
                         Python, PHP, Node.js, and Angular.
                     </p>
                     <p class="text-muted mb-4 fs-6">
@@ -1565,12 +1685,13 @@
                             <div class="glass-card timeline-content-card">
                                 <h4 class="timeline-role">Python AI/ML Developer</h4>
                                 <div class="timeline-company"><i class="fas fa-building me-1"></i> MCT IT Solutions Pvt.
-                                    Ltd.</div>
+                                    Ltd. &nbsp;&bull;&nbsp; Ahmedabad &nbsp;&bull;&nbsp; On-site</div>
                                 <div class="timeline-date">August 2025 – Present</div>
                                 <p class="text-muted small">
                                     Developing AI/ML-based applications using Python, NLP, and deep learning frameworks.
-                                    Building automation tools and intelligent systems to improve client workflows while
-                                    collaborating closely with cross-functional teams to deploy scalable ML solutions.
+                                    Integrated Python with CRM platforms to architect an AI-driven Timesheet management
+                                    system from scratch. Building automation tools and intelligent systems to improve
+                                    client workflows while collaborating closely with cross-functional teams.
                                 </p>
                                 <div class="d-flex flex-wrap gap-2 mt-3">
                                     <span class="tech-pill">Python</span>
@@ -1587,7 +1708,7 @@
                             <div class="glass-card timeline-content-card">
                                 <h4 class="timeline-role">Part-Time Marketing Executive & Content Designer</h4>
                                 <div class="timeline-company"><i class="fas fa-hospital me-1"></i> Sparsh Neonatal &
-                                    Pediatric Centre</div>
+                                    Pediatric Centre &nbsp;&bull;&nbsp; Ahmedabad &nbsp;&bull;&nbsp; Remote</div>
                                 <div class="timeline-date">August 2024 – Present</div>
                                 <p class="text-muted small">
                                     Creating promotional social media posts, festival graphics, and awareness videos
@@ -1608,7 +1729,8 @@
                             <div class="timeline-node"></div>
                             <div class="glass-card timeline-content-card">
                                 <h4 class="timeline-role">Angular Developer Intern</h4>
-                                <div class="timeline-company"><i class="fas fa-building me-1"></i> Tatvasoft</div>
+                                <div class="timeline-company"><i class="fas fa-building me-1"></i> Tatvasoft
+                                    &nbsp;&bull;&nbsp; Ahmedabad &nbsp;&bull;&nbsp; Remote</div>
                                 <div class="timeline-date">May 2024 – June 2024</div>
                                 <p class="text-muted small">
                                     Contributed to the Mission Management System using Angular CLI (v14.2.13), focusing
@@ -1630,7 +1752,7 @@
                             <div class="glass-card timeline-content-card">
                                 <h4 class="timeline-role">Web Development Intern</h4>
                                 <div class="timeline-company"><i class="fas fa-building me-1"></i> Neptune Technolab
-                                </div>
+                                    &nbsp;&bull;&nbsp; Gandhinagar &nbsp;&bull;&nbsp; On-site</div>
                                 <div class="timeline-date">December 2023 – January 2024</div>
                                 <p class="text-muted small">
                                     Developed <strong>EverStick</strong>, an advanced sticky notes web app with features
@@ -1661,7 +1783,7 @@
                             <div class="glass-card timeline-content-card">
                                 <h4 class="timeline-role">B.E. in Information Technology</h4>
                                 <div class="timeline-company"><i class="fas fa-university me-1"></i> LDRP Institute of
-                                    Technology and Research</div>
+                                    Technology and Research &nbsp;&bull;&nbsp; Gandhinagar</div>
                                 <div class="timeline-date">October 2021 – April 2025</div>
                                 <p class="text-muted small mb-2">
                                     <strong>Cumulative Grade Point Average (CPI):</strong> 8.50 / 10.0
@@ -1669,6 +1791,20 @@
                                 <p class="text-muted small">
                                     <strong>Core Coursework:</strong> Data Structures & Algorithms, Web Development,
                                     Database Management Systems, AI & ML Fundamentals, Software Engineering.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-block">
+                            <div class="timeline-node"></div>
+                            <div class="glass-card timeline-content-card">
+                                <h4 class="timeline-role">Higher Secondary Certificate (HSC)</h4>
+                                <div class="timeline-company"><i class="fas fa-school me-1"></i> Arpan International
+                                    School &nbsp;&bull;&nbsp; Ahmedabad</div>
+                                <div class="timeline-date">Graduated: 2021</div>
+                                <p class="text-muted small mb-0">
+                                    <strong>Academic Focus:</strong> Science Stream (Group A) – Mathematics, Physics,
+                                    and Chemistry.
                                 </p>
                             </div>
                         </div>
@@ -1687,6 +1823,22 @@
                 <p class="section-desc">Explore a selection of live web applications, AI tools, and full-stack software
                     built with modern stacks.</p>
             </div>
+
+            <!-- GitHub Stats (Temporarily disabled - API is down) -->
+            <!--
+            <div class="row mb-5 github-stats-container" data-aos="fade-up">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <a href="https://github.com/KananPatel1806" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api?username=KananPatel1806&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117" alt="GitHub Stats" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="https://github.com/KananPatel1806" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KananPatel1806&layout=compact&theme=radical&hide_border=true&bg_color=0D1117" alt="Top Languages" />
+                    </a>
+                </div>
+            </div>
+            -->
 
             <!-- Project Category Filters -->
             <div class="filter-tabs" data-aos="fade-up">
@@ -1938,6 +2090,59 @@
                     </div>
                 </div>
 
+                <!-- Project 10: NextGen E-Commerce -->
+                <div class="col-md-6 col-lg-4 project-item-wrapper" data-category="fullstack" data-aos="zoom-in"
+                    data-aos-delay="900">
+                    <div class="glass-card project-card-modern">
+                        <div class="project-header-bar">
+                            <div class="project-folder-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="project-link-icons">
+                                <a href="https://github.com/KananPatel1806" target="_blank" class="project-icon-link"
+                                    title="GitHub Repository">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h4 class="project-name">NextGen E-Commerce <span class="badge bg-indigo ms-1">New</span>
+                            </h4>
+                            <p class="project-desc">A full-stack e-commerce platform featuring a modern UI, fully
+                                functional checkout process, and secure payment gateway integration.</p>
+                            <div class="project-tech-tags">
+                                <span class="tech-pill">React.js</span>
+                                <span class="tech-pill">Node.js</span>
+                                <span class="tech-pill">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 11: Enterprise Canvas App -->
+                <div class="col-md-6 col-lg-4 project-item-wrapper" data-category="tools" data-aos="zoom-in"
+                    data-aos-delay="1000">
+                    <div class="glass-card project-card-modern">
+                        <div class="project-header-bar">
+                            <div class="project-folder-icon"><i class="fas fa-mobile-screen"></i></div>
+                            <div class="project-link-icons">
+                                <a href="#" target="_blank" class="project-icon-link" title="Project Link">
+                                    <i class="fas fa-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h4 class="project-name">PowerApps Canvas App <span class="badge bg-indigo ms-1">New</span>
+                            </h4>
+                            <p class="project-desc">Developed a custom enterprise Canvas application using Microsoft
+                                PowerApps to streamline internal data entry and business workflows.</p>
+                            <div class="project-tech-tags">
+                                <span class="tech-pill">PowerApps</span>
+                                <span class="tech-pill">Canvas App</span>
+                                <span class="tech-pill">Workflow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -2012,8 +2217,10 @@
                                         placeholder="Hi Kanan, I'd like to talk about..." required></textarea>
                                 </div>
                                 <div class="col-12 text-center pt-2">
-                                    <button type="submit" class="btn-glow-primary w-100 justify-content-center" id="submit-btn">
-                                        <i class="fas fa-paper-plane me-2"></i> <span id="submit-btn-text">Send Message</span>
+                                    <button type="submit" class="btn-glow-primary w-100 justify-content-center"
+                                        id="submit-btn">
+                                        <i class="fas fa-paper-plane me-2"></i> <span id="submit-btn-text">Send
+                                            Message</span>
                                     </button>
                                 </div>
                             </div>
@@ -2035,9 +2242,36 @@
                 <a href="mailto:khpatel1806@gmail.com" class="text-muted hover-indigo"><i
                         class="fas fa-envelope"></i></a>
             </div>
-            <p class="mb-0 text-muted">&copy; 2026 Kanan Patel. All rights reserved. Designed for excellence.</p>
+            <p class="mb-0 text-muted">&copy; 2026 Kanan Patel. Engineered with passion &amp; code <i
+                    class="fas fa-code ms-1"></i></p>
         </div>
     </footer>
+
+    <!-- Resume Modal -->
+    <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content"
+                style="background: rgba(13, 17, 23, 0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-main fw-bold" id="resumeModalLabel"><i
+                            class="fas fa-file-pdf text-indigo me-2"></i>Kanan Patel — Resume</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 20px;">
+                    <!-- Embedded PDF Viewer -->
+                    <iframe src="Kanan Patel Resume 2026.pdf" width="100%" height="750px"
+                        style="border: none; border-radius: 8px;"></iframe>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center">
+                    <a href="Kanan Patel Resume 2026.pdf" class="btn-glow-primary"
+                        download="Kanan Patel Resume 2026.pdf">
+                        <i class="fas fa-file-arrow-down me-2"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Interactive Terminal Overlay (Ctrl+K) -->
     <div class="terminal-overlay" id="terminal-overlay">
@@ -2095,6 +2329,31 @@
             initParticles();
             initTheme();
             initTiltEffect();
+
+            // Auto-close mobile navbar on link click & click outside
+            const navLinks = document.querySelectorAll('.nav-link-custom');
+            const navbarCollapse = document.getElementById('navMenu');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+
+            function closeMenu() {
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                    else navbarCollapse.classList.remove('show');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (navbarCollapse && navbarToggler) {
+                    if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target)) {
+                        closeMenu();
+                    }
+                }
+            });
         });
 
         /* ==========================================================================
@@ -2259,7 +2518,7 @@
         function filterSkills(category) {
             const buttons = document.querySelectorAll('#skills .filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (window.event && window.event.target) window.event.target.classList.add('active');
 
             const items = document.querySelectorAll('#skills-grid .skill-item-wrapper');
             items.forEach(item => {
@@ -2274,7 +2533,7 @@
         function filterProjects(category) {
             const buttons = document.querySelectorAll('#projects .filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (window.event && window.event.target) window.event.target.classList.add('active');
 
             const items = document.querySelectorAll('#projects-grid .project-item-wrapper');
             items.forEach(item => {
@@ -2334,17 +2593,17 @@
         /* ==========================================================================
            EMAILJS CONTACT FORM — sends real email to khpatel1806@gmail.com
            ========================================================================== */
-        (function() {
+        (function () {
             emailjs.init('tB1I4sGYNaUnKGI8Nu');
         })();
 
         function handleContactSubmit(e) {
             e.preventDefault();
-            const name    = document.getElementById('sender-name').value.trim();
-            const email   = document.getElementById('sender-email').value.trim();
+            const name = document.getElementById('sender-name').value.trim();
+            const email = document.getElementById('sender-email').value.trim();
             const subject = document.getElementById('sender-subject').value.trim();
             const message = document.getElementById('sender-message').value.trim();
-            const btn     = document.getElementById('submit-btn');
+            const btn = document.getElementById('submit-btn');
             const btnText = document.getElementById('submit-btn-text');
 
             // Disable button while sending
@@ -2352,11 +2611,11 @@
             btnText.textContent = 'Sending…';
 
             const templateParams = {
-                from_name:    name,
-                from_email:   email,
-                subject:      subject,
-                message:      message,
-                to_name:      'Kanan'
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                to_name: 'Kanan'
             };
 
             emailjs.send('service_kcmicn2', 'template_77iybsq', templateParams)
