@@ -1411,9 +1411,9 @@
                         <a href="#projects" class="btn-glow-primary">
                             <i class="fas fa-rocket"></i> Explore Projects
                         </a>
-                        <button class="btn-outline-custom" data-bs-toggle="modal" data-bs-target="#resumeModal">
-                            <i class="fas fa-eye"></i> View Resume
-                        </button>
+                        <a href="Kanan_Patel_Resume.pdf" class="btn-outline-custom" download="Kanan_Patel_Resume.pdf">
+                            <i class="fas fa-file-arrow-down"></i> Download Resume
+                        </a>
                         <button class="btn-outline-custom" onclick="openTerminal()">
                             <i class="fas fa-terminal text-indigo"></i> Run CLI
                         </button>
@@ -1425,25 +1425,25 @@
             <div class="row hero-stats-row g-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-6 col-md-3">
                     <div class="stat-box glass-card">
-                        <div class="stat-number-text" id="stat-project-count">9+</div>
+                        <div class="stat-number-text counter" data-target="9" data-suffix="+">0</div>
                         <div class="stat-label-text">Projects Built</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-box glass-card">
-                        <div class="stat-number-text">4</div>
-                        <div class="stat-label-text">Industry Roles</div>
+                        <div class="stat-number-text counter" data-target="1.5" data-suffix="+">0</div>
+                        <div class="stat-label-text">Years Experience</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-box glass-card">
-                        <div class="stat-number-text">18+</div>
+                        <div class="stat-number-text counter" data-target="18" data-suffix="+">0</div>
                         <div class="stat-label-text">Technologies</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-box glass-card">
-                        <div class="stat-number-text">8.50</div>
+                        <div class="stat-number-text counter" data-target="8.50" data-decimals="2">0</div>
                         <div class="stat-label-text">BE CPI</div>
                     </div>
                 </div>
@@ -2729,10 +2729,10 @@
                     break;
                 case 'resume':
                     const resumeLink = document.createElement('a');
-                    resumeLink.href = 'Kanan Patel Resume 2026.pdf';
-                    resumeLink.download = 'Kanan Patel Resume 2026.pdf';
+                    resumeLink.href = 'Kanan_Patel_Resume.pdf';
+                    resumeLink.download = 'Kanan_Patel_Resume.pdf';
                     resumeLink.click();
-                    appendTerminalLine('Downloading Kanan Patel Resume 2026.pdf...', 'text-success');
+                    appendTerminalLine('Downloading Kanan_Patel_Resume.pdf...', 'text-success');
                     break;
                 case 'whoami':
                     appendTerminalLine('User: Guest Visitor | Terminal: WebCLI v2.0 | Status: Authorized');
@@ -2767,6 +2767,55 @@
 
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* Number Counter Animation */
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const suffix = counter.getAttribute('data-suffix') || '';
+                    // Use explicitly set decimals or determine based on whether it's a float
+                    let defaultDecimals = 0;
+                    if (target % 1 !== 0) {
+                        // Count decimals
+                        const decimalStr = target.toString().split('.')[1];
+                        defaultDecimals = decimalStr ? decimalStr.length : 1;
+                    }
+                    const decimals = counter.hasAttribute('data-decimals') ? 
+                        parseInt(counter.getAttribute('data-decimals')) : defaultDecimals;
+                    
+                    const duration = 2000; 
+                    const frameDuration = 1000 / 60;
+                    const totalFrames = Math.round(duration / frameDuration);
+                    
+                    let frame = 0;
+                    const countTo = target;
+                    
+                    const counterInterval = setInterval(() => {
+                        frame++;
+                        const progress = frame / totalFrames;
+                        // Use ease-out for smoother ending
+                        const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+                        const currentCount = easeOutProgress * countTo;
+                        
+                        if (frame === totalFrames) {
+                            clearInterval(counterInterval);
+                            counter.innerText = countTo.toFixed(decimals) + suffix;
+                        } else {
+                            counter.innerText = currentCount.toFixed(decimals) + suffix;
+                        }
+                    }, frameDuration);
+                    
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
         });
     </script>
 </body>
