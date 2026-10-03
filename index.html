@@ -1431,7 +1431,7 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-box glass-card">
-                        <div class="stat-number-text counter" data-target="1.5" data-suffix="+">0</div>
+                        <div class="stat-number-text counter" id="exp-counter" data-target="1.5" data-suffix="+">0</div>
                         <div class="stat-label-text">Years Experience</div>
                     </div>
                 </div>
@@ -2768,6 +2768,17 @@
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        /* Dynamic Experience Calculation */
+        const expCounter = document.getElementById('exp-counter');
+        if (expCounter) {
+            const startDate = new Date(2025, 7, 1); // August 2025
+            const currentDate = new Date();
+            let months = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + (currentDate.getMonth() - startDate.getMonth());
+            if (months < 0) months = 0;
+            const years = (months / 12).toFixed(1);
+            expCounter.setAttribute('data-target', years);
+        }
 
         /* Number Counter Animation */
         const counters = document.querySelectorAll('.counter');
